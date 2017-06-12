@@ -54,7 +54,6 @@ Partial Class frmMain
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripSplitButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.bgwOpenStdList = New System.ComponentModel.BackgroundWorker()
         Me.stlMsg = New System.Windows.Forms.ToolStripStatusLabel()
         CType(Me.RibbonControlAdv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RibbonControlAdv1.SuspendLayout()
@@ -448,9 +447,6 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1.Spring = True
         Me.ToolStripStatusLabel1.Text = "พัฒนาโดย นายเฉลิมพิสิฐ ศิริชัย [CSAG, Computer System Administrator Group]"
         '
-        'bgwOpenStdList
-        '
-        '
         'stlMsg
         '
         Me.stlMsg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
@@ -527,6 +523,5 @@ Partial Class frmMain
     Friend WithEvents ToolStripButton10 As ToolStripButton
     Friend WithEvents ToolStripButton8 As ToolStripButton
     Friend WithEvents ToolStripButton9 As ToolStripButton
-    Friend WithEvents bgwOpenStdList As System.ComponentModel.BackgroundWorker
     Friend WithEvents stlMsg As ToolStripStatusLabel
 End Class

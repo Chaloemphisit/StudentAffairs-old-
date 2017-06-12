@@ -10,17 +10,15 @@ Public Class frmMain
         Control.CheckForIllegalCrossThreadCalls = False
         Me.WindowState = FormWindowState.Maximized
         frmLogin.Hide()
-        bgwOpenStdList.RunWorkerAsync()
-        'frmStdList.MdiParent = Me
-        'frmStdList.Show()
+        frmStdList.MdiParent = Me
+        frmStdList.Show()
     End Sub
 
 
     Private Sub btnStdList_Click(sender As Object, e As EventArgs) Handles btnStdList.Click
         'MessageBox.Show("User ID :  " & getUserID() & ", " & getUserRoleID())
-        'frmStdList.MdiParent = Me
-        'frmStdList.Show()
-        bgwOpenStdList.RunWorkerAsync()
+        frmStdList.MdiParent = Me
+        frmStdList.Show()
     End Sub
     Private Sub frmMain_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
@@ -43,22 +41,6 @@ Public Class frmMain
         Me.Enabled = False
         frmDataManagement.Show()
 
-    End Sub
-
-    Private Sub bgwOpenStdList_DoWork(sender As Object, e As DoWorkEventArgs) Handles bgwOpenStdList.DoWork
-        frmStdList.MdiParent = Me
-        stlMsg.Text = "Process.."
-        frmStdList.Show()
-    End Sub
-
-    Private Sub bgwOpenStdList_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bgwOpenStdList.RunWorkerCompleted
-        If e.Cancelled = True Then
-            stlMsg.Text = "Canceled!"
-        ElseIf e.Error IsNot Nothing Then
-            stlMsg.Text = "Error: " & e.Error.Message
-        Else
-            stlMsg.Text = "Ready"
-        End If
     End Sub
 
 End Class

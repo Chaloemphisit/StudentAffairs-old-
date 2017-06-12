@@ -16,6 +16,7 @@ Public Class frmStdList
     End Sub
 
     Private Sub frmStdList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Control.CheckForIllegalCrossThreadCalls = False
         Conn = ConnectDataBase()
         Call RetrieveData(False)
         Me.WindowState = FormWindowState.Maximized
