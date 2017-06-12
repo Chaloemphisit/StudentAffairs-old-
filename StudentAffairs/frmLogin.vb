@@ -25,8 +25,7 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
         While DR.Read
             userFound = True
             role = DR("RoleDescription").ToString
-            setUserID(DR("UserID").ToString)
-            setUserRoleID(DR("RoleID").ToString)
+            setUserDetail(DR("UserID").ToString, DR("RoleID").ToString, userFound)
         End While
 
         'checking the result
@@ -34,6 +33,7 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
             'MsgBox("Login Success. You are " & role, MsgBoxStyle.OkOnly, "welcome")
             'Me.Hide()
             addLog()
+            Me.Hide()
             frmMain.Show()
 
         Else
@@ -76,5 +76,10 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
             CheckLogin(Trim(txtUsername.Text), Trim(txtPassword.Text))
         End If
 
+    End Sub
+
+    Private Sub frmLogin_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        Me.Dispose()
+        Application.Exit()
     End Sub
 End Class

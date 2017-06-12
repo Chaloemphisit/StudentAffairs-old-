@@ -157,8 +157,10 @@ Public Class frmMain
 
     Private Sub btnStdList_Click(sender As Object, e As EventArgs) Handles btnStdList.Click
         MessageBox.Show("User ID :  " & getUserID() & ", " & getUserRoleID())
-
+        frmStdList.Show()
     End Sub
+
+
 
     Private Sub bgwLoad_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bgwLoad.DoWork
         stlStatus.Visible = True
@@ -202,7 +204,19 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        MessageBox.Show("UserID :" & getUserID() & " | RoleID:" & getUserRoleID())
+    Private Sub frmMain_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        Me.Dispose()
+        Application.Exit()
+    End Sub
+
+    Private Sub btnSignout_Click(sender As Object, e As EventArgs) Handles btnSignout.Click
+        Me.Dispose()
+        setUserDetail("", "", False)
+        frmLogin.Show()
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Me.Dispose()
+        Application.Exit()
     End Sub
 End Class

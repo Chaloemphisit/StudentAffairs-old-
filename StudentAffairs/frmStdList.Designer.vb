@@ -1,6 +1,7 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmStdList
-    Inherits System.Windows.Forms.Form
+    'Inherits System.Windows.Forms.Form
+    Inherits Syncfusion.Windows.Forms.MetroForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>

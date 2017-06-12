@@ -146,11 +146,6 @@ Public Class frmStdList
         Call RetrieveData()
     End Sub
 
-    Private Sub frmMain_Close(sender As Object, e As EventArgs) Handles MyBase.Closed
-        If Conn.State = ConnectionState.Open Then Conn.Close()
-        End
-    End Sub
-
     '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     '\\\\\\\\\\\                                                                        \\\\\\\\\\\
     '\\\\\\\\\\\                            Background Worker                           \\\\\\\\\\\

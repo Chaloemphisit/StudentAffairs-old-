@@ -34,8 +34,8 @@ Partial Class frmMain
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripEx3 = New Syncfusion.Windows.Forms.Tools.ToolStripEx()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.btnSignout = New System.Windows.Forms.ToolStripButton()
+        Me.btnClose = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripTabItem2 = New Syncfusion.Windows.Forms.Tools.ToolStripTabItem()
         Me.ToolStripTabItem3 = New Syncfusion.Windows.Forms.Tools.ToolStripTabItem()
         Me.ToolStripTabItem4 = New Syncfusion.Windows.Forms.Tools.ToolStripTabItem()
@@ -72,7 +72,8 @@ Partial Class frmMain
         Me.RibbonControlAdv1.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Metro
         Me.RibbonControlAdv1.Location = New System.Drawing.Point(1, 0)
         Me.RibbonControlAdv1.MenuButtonFont = New System.Drawing.Font("Segoe UI", 8.25!)
-        Me.RibbonControlAdv1.MenuButtonText = "ไฟล์"
+        Me.RibbonControlAdv1.MenuButtonText = ""
+        Me.RibbonControlAdv1.MenuButtonVisible = False
         Me.RibbonControlAdv1.MenuButtonWidth = 56
         Me.RibbonControlAdv1.MenuColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(114, Byte), Integer), CType(CType(198, Byte), Integer))
         Me.RibbonControlAdv1.Name = "RibbonControlAdv1"
@@ -109,7 +110,7 @@ Partial Class frmMain
         Me.ToolStripTabItem1.Panel.TabIndex = 2
         Me.ToolStripTabItem1.Panel.Text = "รายการหลัก"
         Me.ToolStripTabItem1.Position = 0
-        Me.ToolStripTabItem1.Size = New System.Drawing.Size(87, 30)
+        Me.ToolStripTabItem1.Size = New System.Drawing.Size(87, 25)
         Me.ToolStripTabItem1.Text = "รายการหลัก"
         '
         'ToolStripEx1
@@ -125,7 +126,7 @@ Partial Class frmMain
         Me.ToolStripEx1.Name = "ToolStripEx1"
         Me.ToolStripEx1.Office12Mode = False
         Me.ToolStripEx1.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
-        Me.ToolStripEx1.Size = New System.Drawing.Size(154, 113)
+        Me.ToolStripEx1.Size = New System.Drawing.Size(154, 118)
         Me.ToolStripEx1.TabIndex = 0
         '
         'btnStdList
@@ -134,7 +135,7 @@ Partial Class frmMain
         Me.btnStdList.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.btnStdList.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnStdList.Name = "btnStdList"
-        Me.btnStdList.Size = New System.Drawing.Size(74, 91)
+        Me.btnStdList.Size = New System.Drawing.Size(74, 96)
         Me.btnStdList.Text = "รายชื่อนักเรียน"
         Me.btnStdList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -144,7 +145,7 @@ Partial Class frmMain
         Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(56, 91)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(56, 96)
         Me.ToolStripButton1.Text = "แกไขข้อมูล"
         Me.ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -161,7 +162,7 @@ Partial Class frmMain
         Me.ToolStripEx2.Name = "ToolStripEx2"
         Me.ToolStripEx2.Office12Mode = False
         Me.ToolStripEx2.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
-        Me.ToolStripEx2.Size = New System.Drawing.Size(153, 113)
+        Me.ToolStripEx2.Size = New System.Drawing.Size(153, 118)
         Me.ToolStripEx2.TabIndex = 1
         Me.ToolStripEx2.Text = "ส่งออก"
         '
@@ -171,7 +172,7 @@ Partial Class frmMain
         Me.ToolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(67, 91)
+        Me.ToolStripButton5.Size = New System.Drawing.Size(67, 96)
         Me.ToolStripButton5.Text = "ส่งออก excel"
         Me.ToolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -181,7 +182,7 @@ Partial Class frmMain
         Me.ToolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(60, 91)
+        Me.ToolStripButton6.Size = New System.Drawing.Size(60, 96)
         Me.ToolStripButton6.Text = "ส่งออก pdf"
         Me.ToolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -193,34 +194,34 @@ Partial Class frmMain
         Me.ToolStripEx3.ForeColor = System.Drawing.Color.MidnightBlue
         Me.ToolStripEx3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStripEx3.Image = Nothing
-        Me.ToolStripEx3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripButton4})
+        Me.ToolStripEx3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnSignout, Me.btnClose})
         Me.ToolStripEx3.Location = New System.Drawing.Point(311, 1)
         Me.ToolStripEx3.Name = "ToolStripEx3"
         Me.ToolStripEx3.Office12Mode = False
         Me.ToolStripEx3.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
-        Me.ToolStripEx3.Size = New System.Drawing.Size(148, 113)
+        Me.ToolStripEx3.Size = New System.Drawing.Size(148, 118)
         Me.ToolStripEx3.TabIndex = 2
         Me.ToolStripEx3.Text = "การเข้าใช้งาน"
         '
-        'ToolStripButton3
+        'btnSignout
         '
-        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
-        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(67, 91)
-        Me.ToolStripButton3.Text = "ออกจากระบบ"
-        Me.ToolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnSignout.Image = CType(resources.GetObject("btnSignout.Image"), System.Drawing.Image)
+        Me.btnSignout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.btnSignout.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSignout.Name = "btnSignout"
+        Me.btnSignout.Size = New System.Drawing.Size(67, 96)
+        Me.btnSignout.Text = "ออกจากระบบ"
+        Me.btnSignout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'ToolStripButton4
+        'btnClose
         '
-        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
-        Me.ToolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(59, 91)
-        Me.ToolStripButton4.Text = "ปิดโปรแกรม"
-        Me.ToolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
+        Me.btnClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(59, 96)
+        Me.btnClose.Text = "ปิดโปรแกรม"
+        Me.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ToolStripTabItem2
         '
@@ -233,7 +234,7 @@ Partial Class frmMain
         Me.ToolStripTabItem2.Panel.TabIndex = 3
         Me.ToolStripTabItem2.Panel.Text = "พิมพ์รายงาน"
         Me.ToolStripTabItem2.Position = 1
-        Me.ToolStripTabItem2.Size = New System.Drawing.Size(89, 30)
+        Me.ToolStripTabItem2.Size = New System.Drawing.Size(89, 25)
         Me.ToolStripTabItem2.Tag = "2"
         Me.ToolStripTabItem2.Text = "พิมพ์รายงาน"
         '
@@ -248,7 +249,7 @@ Partial Class frmMain
         Me.ToolStripTabItem3.Panel.TabIndex = 4
         Me.ToolStripTabItem3.Panel.Text = "ตั้งค่าระบบ"
         Me.ToolStripTabItem3.Position = 2
-        Me.ToolStripTabItem3.Size = New System.Drawing.Size(79, 30)
+        Me.ToolStripTabItem3.Size = New System.Drawing.Size(79, 25)
         Me.ToolStripTabItem3.Tag = "3"
         Me.ToolStripTabItem3.Text = "ตั้งค่าระบบ"
         '
@@ -263,7 +264,7 @@ Partial Class frmMain
         Me.ToolStripTabItem4.Panel.TabIndex = 5
         Me.ToolStripTabItem4.Panel.Text = "เกี่ยวกับ"
         Me.ToolStripTabItem4.Position = 3
-        Me.ToolStripTabItem4.Size = New System.Drawing.Size(69, 30)
+        Me.ToolStripTabItem4.Size = New System.Drawing.Size(69, 25)
         Me.ToolStripTabItem4.Tag = "4"
         Me.ToolStripTabItem4.Text = "เกี่ยวกับ"
         '
@@ -424,8 +425,8 @@ Partial Class frmMain
     Friend WithEvents btnStdList As ToolStripButton
     Friend WithEvents ToolStripEx2 As ToolStripEx
     Friend WithEvents ToolStripEx3 As ToolStripEx
-    Friend WithEvents ToolStripButton3 As ToolStripButton
-    Friend WithEvents ToolStripButton4 As ToolStripButton
+    Friend WithEvents btnSignout As ToolStripButton
+    Friend WithEvents btnClose As ToolStripButton
     Friend WithEvents ToolStripTabItem3 As ToolStripTabItem
     Friend WithEvents ToolStripTabItem4 As ToolStripTabItem
     Friend WithEvents ToolStripButton2 As ToolStripSplitButton

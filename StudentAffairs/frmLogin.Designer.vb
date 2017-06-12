@@ -1,6 +1,7 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLogin
-    Inherits System.Windows.Forms.Form
+    'Inherits System.Windows.Forms.Form
+    Inherits Syncfusion.Windows.Forms.MetroForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -33,12 +34,8 @@ Partial Class frmLogin
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.lblLoad = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
-        Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -157,22 +154,6 @@ Partial Class frmLogin
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "เข้าสู่ระบบ"
         '
-        'StatusStrip
-        '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 500)
-        Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(909, 25)
-        Me.StatusStrip.TabIndex = 1
-        Me.StatusStrip.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Roboto Light", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(190, 20)
-        Me.ToolStripStatusLabel1.Text = "พัฒนาโดย นายเฉลิมพิสิฐ ศิริชัย"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -186,42 +167,28 @@ Partial Class frmLogin
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "ระบบบันทึกพฤติกรรมนักเรียน"
         '
-        'lblLoad
-        '
-        Me.lblLoad.AutoSize = True
-        Me.lblLoad.BackColor = System.Drawing.Color.Transparent
-        Me.lblLoad.Font = New System.Drawing.Font("Roboto Condensed", 14.0!)
-        Me.lblLoad.ForeColor = System.Drawing.Color.White
-        Me.lblLoad.Location = New System.Drawing.Point(674, 22)
-        Me.lblLoad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblLoad.Name = "lblLoad"
-        Me.lblLoad.Size = New System.Drawing.Size(206, 25)
-        Me.lblLoad.TabIndex = 14
-        Me.lblLoad.Text = "กำลังโหลด กรุณารอสักครู่..."
-        Me.lblLoad.Visible = False
-        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(909, 525)
+        Me.BorderThickness = 0
+        Me.ClientSize = New System.Drawing.Size(903, 474)
         Me.ControlBox = False
-        Me.Controls.Add(Me.lblLoad)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Roboto Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmLogin"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "โปรแกรมบันทึกพฤติกรรมนักเรียน"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.StatusStrip.ResumeLayout(False)
-        Me.StatusStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -237,8 +204,5 @@ Partial Class frmLogin
     Friend WithEvents btnCancle As Button
     Friend WithEvents btnSignin As Button
     Friend WithEvents lblMessageError As Label
-    Friend WithEvents StatusStrip As StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents Label2 As Label
-    Friend WithEvents lblLoad As Label
 End Class
