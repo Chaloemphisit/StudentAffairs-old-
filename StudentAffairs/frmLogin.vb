@@ -1,9 +1,6 @@
 ﻿Imports System.Data.OleDb
 
 Public Class frmLogin
-    Private Sub btnCancle_Click(sender As Object, e As EventArgs) Handles btnCancle.Click
-        Me.Close()
-    End Sub
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Conn = ConnectDataBase()
@@ -33,14 +30,14 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
             'MsgBox("Login Success. You are " & role, MsgBoxStyle.OkOnly, "welcome")
             'Me.Hide()
             addLog()
-            Me.Hide()
             frmMain.Show()
 
         Else
             txtPassword.Text = ""
             txtUsername.Text = ""
-            lblMessageError.Visible = True
-            lblMessageError.Text = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง!"
+            ''lblMessageError.Text = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง!"
+            ' MessageBox.Show("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง","ผิดพลาด", vbOKOnly)
+            MsgBox("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง", vbOKOnly, "ผิดพลาด")
         End If
 
         Conn.Close()
@@ -71,11 +68,16 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
 
     Private Sub btnSignin_Click(sender As Object, e As EventArgs) Handles btnSignin.Click
         If (txtPassword.Text = "" Or txtUsername.Text = "") Then
-            lblMessageError.Text = "Please fill Username or Password"
+            'lblMessageError.Text = "Please fill Username or Password"
         Else
             CheckLogin(Trim(txtUsername.Text), Trim(txtPassword.Text))
         End If
 
+    End Sub
+
+    Private Sub btnCancle_Click(sender As Object, e As EventArgs) Handles btnCancle.Click
+        Me.Dispose()
+        Application.Exit()
     End Sub
 
     Private Sub frmLogin_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed

@@ -76,7 +76,10 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Syncfusion.Grid.Base, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Windows, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Base, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Windows, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SpellChecker.Base, Version=15.2460.0.40, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -118,10 +121,10 @@
     <Compile Include="frmBehevior.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLoadData.Designer.vb">
-      <DependentUpon>frmLoadData.vb</DependentUpon>
+    <Compile Include="frmDataManagement.Designer.vb">
+      <DependentUpon>frmDataManagement.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLoadData.vb">
+    <Compile Include="frmDataManagement.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.vb">
@@ -165,8 +168,8 @@
     <EmbeddedResource Include="frmBehevior.resx">
       <DependentUpon>frmBehevior.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLoadData.resx">
-      <DependentUpon>frmLoadData.vb</DependentUpon>
+    <EmbeddedResource Include="frmDataManagement.resx">
+      <DependentUpon>frmDataManagement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>

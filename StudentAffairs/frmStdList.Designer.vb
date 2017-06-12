@@ -1,4 +1,5 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports Syncfusion.Windows.Forms
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmStdList
     'Inherits System.Windows.Forms.Form
     Inherits Syncfusion.Windows.Forms.MetroForm
@@ -24,135 +25,168 @@ Partial Class frmStdList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStdList))
-        Me.grList = New System.Windows.Forms.GroupBox()
-        Me.btnRefresh = New System.Windows.Forms.Button()
-        Me.lblDesc = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.lblRecordCount = New System.Windows.Forms.Label()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.dgvData = New System.Windows.Forms.DataGridView()
-        Me.bgwRetrieveData = New System.ComponentModel.BackgroundWorker()
-        Me.bgwSearchData = New System.ComponentModel.BackgroundWorker()
-        Me.bgwSetupData = New System.ComponentModel.BackgroundWorker()
-        Me.grList.SuspendLayout()
-        CType(Me.dgvData, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GGC = New Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl()
+        Me.ToolStripEx1 = New Syncfusion.Windows.Forms.Tools.ToolStripEx()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.txtSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.btnRefresh = New System.Windows.Forms.ToolStripButton()
+        Me.lblRecordCount = New System.Windows.Forms.ToolStripLabel()
+        CType(Me.GGC, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStripEx1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'grList
+        'GGC
         '
-        Me.grList.Controls.Add(Me.btnRefresh)
-        Me.grList.Controls.Add(Me.lblDesc)
-        Me.grList.Controls.Add(Me.Label12)
-        Me.grList.Controls.Add(Me.lblRecordCount)
-        Me.grList.Controls.Add(Me.txtSearch)
-        Me.grList.Controls.Add(Me.dgvData)
-        Me.grList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grList.Location = New System.Drawing.Point(0, 5)
-        Me.grList.Name = "grList"
-        Me.grList.Size = New System.Drawing.Size(822, 452)
-        Me.grList.TabIndex = 2
-        Me.grList.TabStop = False
-        Me.grList.Text = " Listing of Persons "
+        Me.GGC.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GGC.BackColor = System.Drawing.SystemColors.Window
+        Me.GGC.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.GGC.Location = New System.Drawing.Point(0, 75)
+        Me.GGC.Name = "GGC"
+        Me.GGC.ShowCurrentCellBorderBehavior = Syncfusion.Windows.Forms.Grid.GridShowCurrentCellBorder.GrayWhenLostFocus
+        Me.GGC.Size = New System.Drawing.Size(705, 342)
+        Me.GGC.TabIndex = 66
+        Me.GGC.Text = "GGC"
+        Me.GGC.UseRightToLeftCompatibleTextBox = True
+        Me.GGC.VersionInfo = "15.2460.0.40"
         '
-        'btnRefresh
+        'ToolStripEx1
         '
-        Me.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
-        Me.btnRefresh.Location = New System.Drawing.Point(204, 19)
-        Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(24, 24)
-        Me.btnRefresh.TabIndex = 57
-        Me.btnRefresh.UseVisualStyleBackColor = True
+        Me.ToolStripEx1.AutoSize = False
+        Me.ToolStripEx1.Font = New System.Drawing.Font("Segoe UI", 8.25!)
+        Me.ToolStripEx1.ForeColor = System.Drawing.Color.Black
+        Me.ToolStripEx1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStripEx1.Image = Nothing
+        Me.ToolStripEx1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripButton1, Me.ToolStripButton4, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.txtSearch, Me.btnRefresh, Me.lblRecordCount})
+        Me.ToolStripEx1.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Metro
+        Me.ToolStripEx1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStripEx1.Name = "ToolStripEx1"
+        Me.ToolStripEx1.Office12Mode = False
+        Me.ToolStripEx1.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
+        Me.ToolStripEx1.ShowCaption = False
+        Me.ToolStripEx1.ShowLauncher = False
+        Me.ToolStripEx1.Size = New System.Drawing.Size(708, 72)
+        Me.ToolStripEx1.TabIndex = 67
+        Me.ToolStripEx1.VisualStyle = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Metro
         '
-        'lblDesc
+        'ToolStripButton3
         '
-        Me.lblDesc.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblDesc.AutoSize = True
-        Me.lblDesc.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblDesc.ForeColor = System.Drawing.Color.Red
-        Me.lblDesc.Location = New System.Drawing.Point(626, 25)
-        Me.lblDesc.Name = "lblDesc"
-        Me.lblDesc.Size = New System.Drawing.Size(191, 13)
-        Me.lblDesc.TabIndex = 56
-        Me.lblDesc.Text = "Double click the mouse to select items."
+        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(52, 64)
+        Me.ToolStripButton3.Text = "เพิ่มข้อมูล"
+        Me.ToolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'Label12
+        'ToolStripButton1
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(6, 24)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(56, 14)
-        Me.Label12.TabIndex = 55
-        Me.Label12.Text = "Search :"
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(58, 64)
+        Me.ToolStripButton1.Text = "แก้ไขข้อมูล"
+        Me.ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'lblRecordCount
+        'ToolStripButton4
         '
-        Me.lblRecordCount.AutoSize = True
-        Me.lblRecordCount.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblRecordCount.Location = New System.Drawing.Point(234, 24)
-        Me.lblRecordCount.Name = "lblRecordCount"
-        Me.lblRecordCount.Size = New System.Drawing.Size(17, 14)
-        Me.lblRecordCount.TabIndex = 54
-        Me.lblRecordCount.Text = "[]"
+        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
+        Me.ToolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton4.Name = "ToolStripButton4"
+        Me.ToolStripButton4.Size = New System.Drawing.Size(52, 64)
+        Me.ToolStripButton4.Text = "ลบข้อมูล"
+        Me.ToolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(52, 64)
+        Me.ToolStripButton2.Text = "พิมพ์"
+        Me.ToolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 67)
+        '
+        'ToolStripLabel1
+        '
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(31, 64)
+        Me.ToolStripLabel1.Text = "ค้นหา"
         '
         'txtSearch
         '
-        Me.txtSearch.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(68, 21)
+        Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(130, 22)
-        Me.txtSearch.TabIndex = 0
+        Me.txtSearch.Size = New System.Drawing.Size(100, 67)
         '
-        'dgvData
+        'btnRefresh
         '
-        Me.dgvData.AllowUserToAddRows = False
-        Me.dgvData.AllowUserToDeleteRows = False
-        Me.dgvData.AllowUserToOrderColumns = True
-        Me.dgvData.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvData.Location = New System.Drawing.Point(6, 49)
-        Me.dgvData.Name = "dgvData"
-        Me.dgvData.ReadOnly = True
-        Me.dgvData.RowHeadersVisible = False
-        Me.dgvData.RowTemplate.Height = 28
-        Me.dgvData.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvData.Size = New System.Drawing.Size(811, 397)
-        Me.dgvData.TabIndex = 1
+        Me.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
+        Me.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(23, 64)
         '
-        'bgwRetrieveData
+        'lblRecordCount
         '
+        Me.lblRecordCount.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.lblRecordCount.Name = "lblRecordCount"
+        Me.lblRecordCount.Size = New System.Drawing.Size(17, 64)
+        Me.lblRecordCount.Text = "[]"
         '
         'frmStdList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(822, 457)
-        Me.Controls.Add(Me.grList)
+        Me.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.BorderThickness = 2
+        Me.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.CaptionBarColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.CaptionBarHeight = 25
+        Me.CaptionButtonColor = System.Drawing.Color.White
+        Me.CaptionButtonHoverColor = System.Drawing.Color.White
+        Me.CaptionFont = New System.Drawing.Font("Roboto Thin", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CaptionForeColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(708, 418)
+        Me.Controls.Add(Me.GGC)
+        Me.Controls.Add(Me.ToolStripEx1)
+        Me.ForeColor = System.Drawing.Color.DimGray
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MetroColor = System.Drawing.Color.Transparent
+        Me.MinimumSize = New System.Drawing.Size(720, 480)
         Me.Name = "frmStdList"
-        Me.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
-        Me.ShowInTaskbar = False
+        Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "รายชื่อนักเรียน"
-        Me.grList.ResumeLayout(False)
-        Me.grList.PerformLayout()
-        CType(Me.dgvData, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GGC, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStripEx1.ResumeLayout(False)
+        Me.ToolStripEx1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents grList As GroupBox
-    Friend WithEvents lblDesc As Label
-    Friend WithEvents Label12 As Label
-    Friend WithEvents lblRecordCount As Label
-    Friend WithEvents txtSearch As TextBox
-    Friend WithEvents dgvData As DataGridView
-    Friend WithEvents bgwRetrieveData As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bgwSearchData As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bgwSetupData As System.ComponentModel.BackgroundWorker
-    Friend WithEvents btnRefresh As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents GGC As Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl
+    Friend WithEvents ToolStripEx1 As Tools.ToolStripEx
+    Friend WithEvents ToolStripButton3 As ToolStripButton
+    Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents ToolStripButton4 As ToolStripButton
+    Friend WithEvents ToolStripButton2 As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripLabel1 As ToolStripLabel
+    Friend WithEvents txtSearch As ToolStripTextBox
+    Friend WithEvents btnRefresh As ToolStripButton
+    Friend WithEvents lblRecordCount As ToolStripLabel
 End Class
