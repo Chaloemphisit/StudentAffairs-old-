@@ -24,7 +24,6 @@ Partial Class frmStdList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Control.CheckForIllegalCrossThreadCalls = False
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStdList))
         Me.GGC = New Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl()
         Me.ToolStripEx1 = New Syncfusion.Windows.Forms.Tools.ToolStripEx()

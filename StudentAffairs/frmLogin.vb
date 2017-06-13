@@ -66,14 +66,6 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
         End Try
     End Sub
 
-    Private Sub btnSignin_Click(sender As Object, e As EventArgs) Handles btnSignin.Click
-        If (txtPassword.Text = "" Or txtUsername.Text = "") Then
-            'lblMessageError.Text = "Please fill Username or Password"
-        Else
-            CheckLogin(Trim(txtUsername.Text), Trim(txtPassword.Text))
-        End If
-
-    End Sub
 
     Private Sub btnCancle_Click(sender As Object, e As EventArgs) Handles btnCancle.Click
         Me.Dispose()
@@ -83,5 +75,14 @@ FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tb
     Private Sub frmLogin_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
         Application.Exit()
+    End Sub
+
+    Private Sub btnSignin_Click(sender As Object, e As EventArgs) Handles btnSignin.Click
+        If (txtPassword.Text = "" Or txtUsername.Text = "") Then
+            'lblMessageError.Text = "Please fill Username or Password"
+        Else
+            CheckLogin(Trim(txtUsername.Text), Trim(txtPassword.Text))
+        End If
+
     End Sub
 End Class

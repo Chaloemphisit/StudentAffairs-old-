@@ -10,7 +10,7 @@ Public Class frmStdList
         ' Add any initialization after the InitializeComponent() call.
     End Sub
 
-    Private Sub frmStdList_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub FrmStdList_FormClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
         'Application.Exit()
     End Sub
@@ -184,5 +184,4 @@ Public Class frmStdList
         '// Get Column Index 0 is the Primary Key. (Hidden column)
         e.Inner.ColIndex = 0
     End Sub
-
 End Class
