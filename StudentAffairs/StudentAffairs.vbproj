@@ -116,10 +116,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmBehevior.Designer.vb">
-      <DependentUpon>frmBehevior.vb</DependentUpon>
+    <Compile Include="frmBehavior.Designer.vb">
+      <DependentUpon>frmBehavior.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBehevior.vb">
+    <Compile Include="frmBehavior.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDataManagement.Designer.vb">
@@ -172,8 +172,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmBehevior.resx">
-      <DependentUpon>frmBehevior.vb</DependentUpon>
+    <EmbeddedResource Include="frmBehavior.resx">
+      <DependentUpon>frmBehavior.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDataManagement.resx">
       <DependentUpon>frmDataManagement.vb</DependentUpon>

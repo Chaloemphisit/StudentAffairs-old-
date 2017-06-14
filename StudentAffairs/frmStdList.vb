@@ -89,7 +89,8 @@ Public Class frmStdList
         '// Initialize Columns GridGroup
         With Me.GGC
             '// Hidden Primary Key Column
-            .TableDescriptor.VisibleColumns.Remove("PrimaryKey")
+            '.TableDescriptor.VisibleColumns.Remove("PrimaryKey")
+
             'Using Column Name
             .TableDescriptor.Columns("std_ID").HeaderText = "รหัสนักเรียน"
             .TableDescriptor.Columns("std_IDCard").HeaderText = "รหัสประจำตัวประชาชน"
@@ -184,4 +185,5 @@ Public Class frmStdList
         '// Get Column Index 0 is the Primary Key. (Hidden column)
         e.Inner.ColIndex = 0
     End Sub
+
 End Class

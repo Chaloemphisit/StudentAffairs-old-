@@ -43,4 +43,13 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub btnMUser_Click(sender As Object, e As EventArgs) Handles btnMUser.Click
+        frmRegister.Show()
+        Me.Enabled = False
+    End Sub
+
+    Private Sub ToolStripButton9_Click(sender As Object, e As EventArgs) Handles ToolStripButton9.Click
+        frmBehavior.MdiParent = Me
+        frmBehavior.Show()
+    End Sub
 End Class

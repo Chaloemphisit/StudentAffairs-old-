@@ -187,13 +187,12 @@ Public Class frmRegister
         Me.KeyPreview = True
         Conn = ConnectDataBase()
         RetrieveUserRole()
-        txtTeacherID.Text = "59050180"
-        txtFirstName.Text = "เฉลิมพิสิฐ"
-        txtLastName.Text = "ศิริชัย"
-        txtTRole.Text = "นักศึกษา"
-        txtUsername.Text = "Chaloemphisit"
+        txtTeacherID.Text = ""
+        txtFirstName.Text = ""
+        txtLastName.Text = ""
+        txtTRole.Text = ""
+        txtUsername.Text = ""
         txtPassword.Text = ""
-        cbUserRole.SelectedIndex = 0
         ckbGeneratePwd.Checked = True
         ckbShowPwd.Checked = True
     End Sub
@@ -205,13 +204,12 @@ Public Class frmRegister
             ckbShowPwd.Checked = True
         Else
             txtPassword.PasswordChar = "•"
-            txtPassword.Text = ""
             ckbShowPwd.Checked = False
         End If
     End Sub
 
     Private Sub btnCancle_Click(sender As Object, e As EventArgs) Handles btnCancle.Click
-        If Conn.State = ConnectionState.Open Then Conn.Close()
+        frmMain.Enabled = True
         Me.Dispose()
     End Sub
     Private Sub ckbShowPwd_CheckStateChanged(sender As Object, e As EventArgs) Handles ckbShowPwd.CheckStateChanged
@@ -263,11 +261,23 @@ Public Class frmRegister
 
     Private Sub txtPassword_Click(sender As Object, e As EventArgs) Handles txtPassword.Click
         clsValidatedCtl(Me.ActiveControl)
+        If ckbGeneratePwd.Checked = True Then
+            txtPassword.SelectAll()
+        End If
     End Sub
 
     Private Sub ckbGenUsername_CheckStateChanged(sender As Object, e As EventArgs) Handles ckbGenUsername.CheckStateChanged
         If ckbGenUsername.Checked = True And Not txtTeacherID.Text = "" Then
             txtUsername.Text = generateUsername(txtTeacherID.Text)
         End If
+    End Sub
+
+    Private Sub frmRegister_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        frmMain.Enabled = True
+        Me.Dispose()
+    End Sub
+
+    Private Sub txtPassword_TextChanged(sender As Object, e As EventArgs) Handles txtPassword.TextChanged
+
     End Sub
 End Class

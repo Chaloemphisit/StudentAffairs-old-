@@ -336,7 +336,7 @@ Partial Class frmRegister
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
         Me.Panel2.Location = New System.Drawing.Point(-2, 255)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(986, 1)
+        Me.Panel2.Size = New System.Drawing.Size(987, 1)
         Me.Panel2.TabIndex = 54
         '
         'ErrorProvider1
@@ -374,7 +374,7 @@ Partial Class frmRegister
         CaptionImage1.Name = "CaptionImage1"
         CaptionImage1.Size = New System.Drawing.Size(48, 48)
         Me.CaptionImages.Add(CaptionImage1)
-        Me.ClientSize = New System.Drawing.Size(587, 354)
+        Me.ClientSize = New System.Drawing.Size(588, 352)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.txtTeacherID)
         Me.Controls.Add(Me.Label7)
@@ -398,8 +398,10 @@ Partial Class frmRegister
         Me.ForeColor = System.Drawing.Color.DimGray
         Me.IconAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(600, 430)
         Me.MetroColor = System.Drawing.Color.Transparent
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(600, 430)
         Me.Name = "frmRegister"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
