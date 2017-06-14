@@ -44,6 +44,8 @@ Partial Class frmRegister
         Me.txtTeacherID = New Syncfusion.Windows.Forms.Tools.TextBoxExt()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ckbGenUsername = New Syncfusion.Windows.Forms.Tools.CheckBoxAdv()
         CType(Me.ckbShowPwd, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ckbGeneratePwd, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFirstName, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,6 +55,8 @@ Partial Class frmRegister
         CType(Me.txtLastName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbUserRole, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTeacherID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ckbGenUsername, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblCaptionPassword
@@ -335,6 +339,25 @@ Partial Class frmRegister
         Me.Panel2.Size = New System.Drawing.Size(986, 1)
         Me.Panel2.TabIndex = 54
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        Me.ErrorProvider1.Icon = CType(resources.GetObject("ErrorProvider1.Icon"), System.Drawing.Icon)
+        '
+        'ckbGenUsername
+        '
+        Me.ckbGenUsername.BeforeTouchSize = New System.Drawing.Size(107, 47)
+        Me.ckbGenUsername.Font = New System.Drawing.Font("Roboto Condensed", 9.5!)
+        Me.ckbGenUsername.ForeColor = System.Drawing.Color.DimGray
+        Me.ckbGenUsername.Location = New System.Drawing.Point(31, 209)
+        Me.ckbGenUsername.MetroColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.ckbGenUsername.Name = "ckbGenUsername"
+        Me.ckbGenUsername.Size = New System.Drawing.Size(107, 47)
+        Me.ckbGenUsername.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro
+        Me.ckbGenUsername.TabIndex = 55
+        Me.ckbGenUsername.Text = "สร้างอัตโนมัติ"
+        Me.ckbGenUsername.ThemesEnabled = False
+        '
         'frmRegister
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -371,6 +394,7 @@ Partial Class frmRegister
         Me.Controls.Add(Me.lblCaptionUserName)
         Me.Controls.Add(Me.ckbShowPwd)
         Me.Controls.Add(Me.ckbGeneratePwd)
+        Me.Controls.Add(Me.ckbGenUsername)
         Me.ForeColor = System.Drawing.Color.DimGray
         Me.IconAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.MaximizeBox = False
@@ -390,6 +414,8 @@ Partial Class frmRegister
         CType(Me.txtLastName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbUserRole, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTeacherID, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ckbGenUsername, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -414,4 +440,6 @@ Partial Class frmRegister
     Friend WithEvents txtTeacherID As Syncfusion.Windows.Forms.Tools.TextBoxExt
     Friend WithEvents Label7 As Label
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents ErrorProvider1 As ErrorProvider
+    Private WithEvents ckbGenUsername As Syncfusion.Windows.Forms.Tools.CheckBoxAdv
 End Class

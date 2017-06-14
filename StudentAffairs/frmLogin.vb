@@ -11,7 +11,7 @@ Public Class frmLogin
         Dim strSQL As String = "SELECT tblUser.UserID, tblUser.Username, tblUser.Password, tblUserRole.RoleID, tblRole.RoleDescription
 FROM tblUser INNER JOIN (tblRole INNER JOIN tblUserRole ON tblRole.[RoleID] = tblUserRole.[RoleID]) ON tblUser.[UserID] = tblUserRole.[UserID]"
 
-        strSQL = strSQL & " WHERE [Username] = '" & txtUsername.Text & "' AND " & "[Password] = '" & txtPassword.Text & "'"
+        strSQL = strSQL & " WHERE [Username] = '" & username & "' AND " & "[Password] = '" & Hash512(password, username) & "'"
         If Conn.State = ConnectionState.Closed Then Conn.Open()
         Cmd = New OleDbCommand(strSQL, Conn)
         DR = Cmd.ExecuteReader()

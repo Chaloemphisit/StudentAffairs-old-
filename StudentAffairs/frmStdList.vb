@@ -24,12 +24,12 @@ Public Class frmStdList
 
     Private Sub RetrieveData(Optional ByVal blnSearch As Boolean = False)
         strSQL =
-            "SELECT tblStudent.std_ID, tblStudent.std_IDCard, Prefix.Prefix, tblStudent.std_FirstName, " &
-            "tblStudent.std_LastName, Gender.Gender, tblStudent.std_Class, tblStudent.std_Room, " &
+            "SELECT tblStudent.std_ID, tblStudent.std_IDCard, tblPrefix.Prefix, tblStudent.std_FirstName, " &
+            "tblStudent.std_LastName, tblGender.Gender, tblStudent.std_Class, tblStudent.std_Room, " &
             "tblStudent.std_Birthday, tblStudent.std_AgeY, tblStudent.std_AgeM, tblStudent.std_Blood, " &
             "tblStudent.std_Ethnicity, tblStudent.std_Nationaliti, tblStudent.std_Religion " &
-            "FROM Prefix INNER JOIN (Gender INNER JOIN tblStudent ON Gender.GenderPK = tblStudent.std_Gender) " &
-            "ON Prefix.PrefixPK = tblStudent.std_Prefix"
+            "FROM tblPrefix INNER JOIN (tblGender INNER JOIN tblStudent ON tblGender.GenderPK = tblStudent.std_Gender) " &
+            "ON tblPrefix.PrefixPK = tblStudent.std_Prefix"
 
         '// blnSearch = True for Serach
         If blnSearch Then

@@ -6,24 +6,18 @@ Imports Syncfusion.Windows.Forms.Tools
 Public Class frmRegister
     Inherits MetroForm
     Dim RoleID As Integer
+    Dim NewData As Boolean = False
 
-    Private Sub checkExistUser(username As String, teacherID As String)
-        If Trim(username = "" Or teacherID = "") Then
-            MessageBox.Show("Username Or Password is null")
-        Else
-            'the query:
-            Dim strSQL As String = "SELECT tblUser.Username, tblTeacher.TeacherID FROM tblTeacher " &
-                                "INNER JOIN tblUser ON tblTeacher.TeacherID = tblUser.UserID"
-
-        strSQL = strSQL & " WHERE [Username] = '" & txtUsername.Text & "' OR [TeacherID] = '" & txtTeacherID.Text & "' "
-
-
+    Private Function checkExistUser(username As String, teacherID As String) As Boolean
+        'the query:
+        Dim strSQL As String = "SELECT tblUser.Username, tblTeacher.TeacherID " &
+                               "FROM tblTeacher INNER JOIN tblUser ON tblTeacher.TeacherID = tblUser.UserID "
+        strSQL = strSQL & " WHERE Username = '" & username & "' Or TeacherID = " & teacherID
         If Conn.State = ConnectionState.Closed Then Conn.Open()
         Cmd = New OleDbCommand(strSQL, Conn)
         DR = Cmd.ExecuteReader()
 
         Dim userFound As Boolean = False
-        Dim role As String
         'if found:
         While DR.Read
             userFound = True
@@ -32,14 +26,14 @@ Public Class frmRegister
         'checking the result
         If userFound = True Then
             MessageBox.Show("พบผู้ใช้ในระบบ!", "ผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            Return False
         Else
-            MsgBox("ใช้งานได้", vbOKOnly,)
+            'MsgBox("ใช้งานได้", vbOKOnly,)
+            Return True
         End If
-
-            Conn.Close()
-        End If
-    End Sub
+        Conn.Close()
+        Return False
+    End Function
 
     Private Function RetrieveUserRole()
         strSQL = "SELECT tblRole.* FROM tblRole  ORDER BY tblRole.RoleID"
@@ -60,23 +54,55 @@ Public Class frmRegister
         End Try
     End Function
 
-    Private Function RetrievePrefix()
-        strSQL = "SELECT tblRole.* FROM tblRole  ORDER BY tblRole.RoleID"
+    Private Function registerNewUser()
+        RoleID = cbUserRole.SelectedIndex + 1
+        Dim str1, str2, str3 As Boolean
+        '//----------------- Insert Teacher Data -----------------
+        strSQL = "INSERT INTO tblTeacher(" &
+                "TeacherID, TeacherFirstName, TeacherLastName, TeacherRole) " &
+                " VALUES(" &
+                " " & txtTeacherID.Text & " ," &
+                "'" & txtFirstName.Text & "'," &
+                "'" & txtLastName.Text & "'," &
+                "'" & txtTRole.Text & "'" &
+                ")"
+        str1 = DoSQL(strSQL)
 
+        strSQL = ""
+        '//----------------- Insert User Data -----------------
+        strSQL = "INSERT INTO tblUser(UserID, [Username], [Password], CreateByID) " &
+                " VALUES(" & txtTeacherID.Text & ",'" & txtUsername.Text & "'," &
+                "'" & Hash512(txtPassword.Text, txtUsername.Text) & "'," & getUserID() & ")"
+        str2 = DoSQL(strSQL)
+
+        '//----------------- Insert User Role -----------------
+        strSQL = "INSERT INTO tblUserRole(" &
+                " UserID, RoleID) " &
+                " VALUES( " & txtTeacherID.Text & "," & RoleID & " )"
+        str3 = DoSQL(strSQL)
+        If (str1 And str2 And str3) Then
+            MessageBox.Show("ลงทะเบียนเรียบร้อย.", "รายงานสถานะ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Dispose()
+        End If
+    End Function
+
+    Private Function DoSQL(ByVal Sql As String) As Boolean
+        Cmd = New OleDb.OleDbCommand
+        If Conn.State = ConnectionState.Closed Then Conn.Open()
+        'MsgBox(Sql)
         Try
-            Cmd = New OleDbCommand
-            If Conn.State = ConnectionState.Closed Then Conn.Open()
             Cmd.Connection = Conn
-            Cmd.CommandText = strSQL
-            Dim DR As OleDbDataReader = Cmd.ExecuteReader
-            While DR.Read
-                cbUserRole.Items.Add(DR.Item("RoleDescription".ToString))
-            End While
-            DR.Close()
-
+            Cmd.CommandType = CommandType.Text
+            Cmd.CommandText = Sql
+            Cmd.ExecuteNonQuery()
+            'MessageBox.Show("ปรับปรุงข้อมูลเรียบร้อย.", "รายงานสถานะ", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Cmd.Dispose()
+            Return True
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MsgBox("Error Update: " & ex.Message)
+            Return False
         End Try
+        Return False
     End Function
 
     Private Function validatedForm() ' As Boolean
@@ -115,27 +141,67 @@ Public Class frmRegister
             Return True
         End If
 
+    End Function
 
+    Private Function checkValidatedCtl(ParamArray ByVal ctl() As Object) As Boolean
+        Dim status As Boolean = True
+        For i As Integer = 0 To UBound(ctl)
+            If Trim(ctl(i).Text = "" Or ctl(i).Text = "กรุณากรอกข้อมูล!") Then
+                ctl(i).Text = "กรุณากรอกข้อมูล!"
+                ctl(i).BorderColor = Color.Red
+                ctl(i).Focus()
+                ckbShowPwd.Checked = True
+                status = False
+            End If
+            If (ctl(i).GetType.Name.ToString = "ComboBoxAdv") Then
+                If (ctl(i).SelectedIndex = -1) Then
+                    cbUserRole.MetroBorderColor = Color.Red
+                    status = False
+                End If
+            End If
+        Next
+
+        Return status
 
     End Function
 
+    Private Function clsValidatedCtl(ParamArray ByVal ctl() As Object) As Boolean
+        Dim status As Boolean = False
+        For i As Integer = 0 To UBound(ctl)
+            If Me.ActiveControl Is ctl(i) Then
+                If Not (ctl(i).GetType.Name.ToString = "ButtonAdv") Then
+                    If Trim(ctl(i).Text = "กรุณากรอกข้อมูล!") Then
+                        ctl(i).Text = ""
+                        ctl(i).BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+                        ckbShowPwd.Checked = True
+                        status = False
+                    End If
+                End If
+            End If
+        Next
+        status = False
+        Return status
+    End Function
+
     Private Sub frmRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.KeyPreview = True
         Conn = ConnectDataBase()
         RetrieveUserRole()
-        txtTeacherID.Text = ""
-        txtFirstName.Text = ""
-        txtLastName.Text = ""
-        txtTRole.Text = ""
-        txtUsername.Text = ""
+        txtTeacherID.Text = "59050180"
+        txtFirstName.Text = "เฉลิมพิสิฐ"
+        txtLastName.Text = "ศิริชัย"
+        txtTRole.Text = "นักศึกษา"
+        txtUsername.Text = "Chaloemphisit"
         txtPassword.Text = ""
-        ckbGeneratePwd.Checked = False
-        ckbShowPwd.Checked = False
+        cbUserRole.SelectedIndex = 0
+        ckbGeneratePwd.Checked = True
+        ckbShowPwd.Checked = True
     End Sub
 
     Private Sub ckbGeneratePwd_CheckStateChanged(sender As Object, e As EventArgs) Handles ckbGeneratePwd.CheckStateChanged
         If ckbGeneratePwd.Checked = True Then
             txtPassword.PasswordChar = ""
-            txtPassword.Text = geratePassword()
+            txtPassword.Text = generatePassword()
             ckbShowPwd.Checked = True
         Else
             txtPassword.PasswordChar = "•"
@@ -157,62 +223,51 @@ Public Class frmRegister
     End Sub
 
     Private Sub cbUserRole_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbUserRole.SelectedIndexChanged
-        RoleID = cbUserRole.SelectedIndex + 1
+        cbUserRole.MetroBorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
     End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        validatedForm()
-        If (validatedForm() = True) Then
-            checkExistUser(Trim(txtUsername.Text), Trim(txtTeacherID.Text))
+        NewData = True
+        If (checkValidatedCtl(txtTeacherID, txtTRole, txtFirstName, txtLastName, txtUsername, txtPassword, cbUserRole)) Then
+            If (checkExistUser(Trim(txtUsername.Text), Trim(txtTeacherID.Text))) Then
+                registerNewUser()
+            End If
+        End If
+    End Sub
+
+    Private Sub frmRegister_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
+        If e.KeyValue = Keys.Tab Then
+            clsValidatedCtl(Me.ActiveControl)
         End If
     End Sub
 
     Private Sub txtTeacherID_Click(sender As Object, e As EventArgs) Handles txtTeacherID.Click
-        If txtTeacherID.BorderColor = Color.Red Then
-            txtTeacherID.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
-            txtTeacherID.Text = ""
-        End If
-    End Sub
-
-    Private Sub txtFirstName_Click(sender As Object, e As EventArgs) Handles txtFirstName.Click
-        If txtFirstName.BorderColor = Color.Red Then
-            txtFirstName.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
-            txtFirstName.Text = ""
-        End If
-    End Sub
-
-    Private Sub txtLastName_Click(sender As Object, e As EventArgs) Handles txtLastName.Click
-        If txtLastName.BorderColor = Color.Red Then
-            txtLastName.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
-            txtLastName.Text = ""
-        End If
+        clsValidatedCtl(txtTeacherID)
     End Sub
 
     Private Sub txtTRole_Click(sender As Object, e As EventArgs) Handles txtTRole.Click
-        If txtTRole.BorderColor = Color.Red Then
-            txtTRole.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
-            txtTRole.Text = ""
-        End If
+        clsValidatedCtl(Me.ActiveControl)
+    End Sub
+
+    Private Sub txtFirstName_Click(sender As Object, e As EventArgs) Handles txtFirstName.Click
+        clsValidatedCtl(Me.ActiveControl)
+    End Sub
+
+    Private Sub txtLastName_Click(sender As Object, e As EventArgs) Handles txtLastName.Click
+        clsValidatedCtl(Me.ActiveControl)
     End Sub
 
     Private Sub txtUsername_Click(sender As Object, e As EventArgs) Handles txtUsername.Click
-        If txtUsername.BorderColor = Color.Red Then
-            txtUsername.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
-            txtUsername.Text = ""
-        End If
+        clsValidatedCtl(Me.ActiveControl)
     End Sub
 
     Private Sub txtPassword_Click(sender As Object, e As EventArgs) Handles txtPassword.Click
-        If txtPassword.BorderColor = Color.Red Then
-            txtPassword.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
-            txtPassword.Text = ""
-            txtPassword.PasswordChar = "•"
-        End If
+        clsValidatedCtl(Me.ActiveControl)
     End Sub
 
-    Private Sub cbUserRole_Click(sender As Object, e As EventArgs) Handles cbUserRole.Click
-        If cbUserRole.MetroBorderColor = Color.Red Then
-            cbUserRole.MetroBorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+    Private Sub ckbGenUsername_CheckStateChanged(sender As Object, e As EventArgs) Handles ckbGenUsername.CheckStateChanged
+        If ckbGenUsername.Checked = True And Not txtTeacherID.Text = "" Then
+            txtUsername.Text = generateUsername(txtTeacherID.Text)
         End If
     End Sub
 End Class

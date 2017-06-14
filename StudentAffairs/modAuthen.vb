@@ -2,7 +2,7 @@
 Imports System.Text
 
 Module modAuthen
-    Private userID As String
+    Private userID As String = "00000"
     Private userRoleID As String
     Private authenticationStatus As Boolean
     Public Function setUserDetail(uID As String, uRoleID As String, authenStatus As Boolean)
@@ -23,7 +23,7 @@ Module modAuthen
         Return authenticationStatus
     End Function
 
-    Public Function geratePassword(Optional ByVal n As Integer = 8) As String
+    Public Function generatePassword(Optional ByVal n As Integer = 8) As String
         'the following is the string that will hold the salt charachters
         Dim mix As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
         Dim salt As String = ""
@@ -34,6 +34,12 @@ Module modAuthen
             salt &= (mix.Substring(x, 1))
         Next
         Return salt
+    End Function
+
+    Public Function generateUsername(id As String) As String
+        Dim username As String
+        username = "T" & id
+        Return username
     End Function
     Public Function Hash512(password As String, salt As String) As String
         Dim convertedToBytes As Byte() = Encoding.UTF8.GetBytes(password & salt)
