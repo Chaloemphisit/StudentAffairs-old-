@@ -10,7 +10,7 @@ Public Class frmMain
         Control.CheckForIllegalCrossThreadCalls = False
         Me.WindowState = FormWindowState.Maximized
         frmLogin.Hide()
-        frmStdList.MdiParent = Me
+        frmStdList.MdiParent = TabbedMDIManager.MdiParent
         frmStdList.Show()
     End Sub
 

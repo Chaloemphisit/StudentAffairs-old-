@@ -1,6 +1,7 @@
 ﻿Imports System.Data.OleDb
 
 Public Class frmLogin
+    Private txtPassword As Object
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Conn = ConnectDataBase()

@@ -111,6 +111,7 @@ Partial Class frmBehavior
         '
         'txtSearch
         '
+        Me.txtSearch.BackColor = System.Drawing.Color.White
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(100, 67)
@@ -138,16 +139,21 @@ Partial Class frmBehavior
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GGC.BackColor = System.Drawing.SystemColors.Window
         Me.GGC.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.GGC.GridOfficeScrollBars = Syncfusion.Windows.Forms.OfficeScrollBars.Metro
+        Me.GGC.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro
         Me.GGC.Location = New System.Drawing.Point(0, 75)
         Me.GGC.Name = "GGC"
         Me.GGC.ShowCurrentCellBorderBehavior = Syncfusion.Windows.Forms.Grid.GridShowCurrentCellBorder.GrayWhenLostFocus
         Me.GGC.Size = New System.Drawing.Size(794, 372)
         Me.GGC.TabIndex = 70
+        Me.GGC.TableDescriptor.AllowNew = False
+        Me.GGC.TableDescriptor.TableOptions.ColumnHeaderRowHeight = 25
+        Me.GGC.TableDescriptor.TableOptions.RecordRowHeight = 25
         Me.GGC.Text = "GGC"
         Me.GGC.UseRightToLeftCompatibleTextBox = True
         Me.GGC.VersionInfo = "15.2460.0.40"
         '
-        'frmBehevior
+        'frmBehavior
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -163,7 +169,7 @@ Partial Class frmBehavior
         Me.ClientSize = New System.Drawing.Size(794, 448)
         Me.Controls.Add(Me.GGC)
         Me.Controls.Add(Me.ToolStripEx1)
-        Me.Name = "frmBehevior"
+        Me.Name = "frmBehavior"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

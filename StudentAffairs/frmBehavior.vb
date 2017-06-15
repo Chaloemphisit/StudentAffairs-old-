@@ -45,7 +45,7 @@ Public Class frmBehavior
             "tblBehavior.Implementation, tblBehavior.Realization, tblBehaviorType.Type, " &
             "tblBehavior.CreateAt, " &
             "[tblTeacher].[TeacherFirstName] & ' ' & [TeacherLastName] AS RecorderName, " &
-            "tblBehavior.RecorderID FROM tblTeacher " &
+            "tblBehavior.RecorderID, tblBehavior.BehaviorType FROM tblTeacher " &
             "INNER JOIN (tblStudent INNER JOIN (tblBehaviorType INNER JOIN tblBehavior " &
             "ON tblBehaviorType.BehaviorTypePK = tblBehavior.BehaviorType) " &
             "ON tblStudent.std_ID = tblBehavior.std_ID) " &
@@ -59,9 +59,7 @@ Public Class frmBehavior
                 " [std_ID] " & " Like '%" & txtSearch.Text & "%'" & " OR " &
                 " [std_FirstName] " & " Like '%" & txtSearch.Text & "%'" & " OR " &
                 " [std_LastName] " & " Like '%" & txtSearch.Text & "%'" & " OR " &
-                " [RecorderID] " & " Like '%" & txtSearch.Text & "%'" & " OR " &
-                " [RecorderName] " & " Like '%" & txtSearch.Text & "%'" &
-                " ORDER BY tblBehavior.CreateAt "
+                " ORDER BY [tblBehavior.CreateAt] "
         Else
             strSQL = strSQL & " ORDER BY tblBehavior.CreateAt "
         End If
@@ -93,6 +91,7 @@ Public Class frmBehavior
         With Me.GGC
             '// Hidden  Column
             .TableDescriptor.VisibleColumns.Remove("RecorderID")
+            .TableDescriptor.VisibleColumns.Remove("BehaviorType")
 
             'Using Column Name
             .TableDescriptor.Columns("std_ID").HeaderText = "รหัสนักเรียน"
@@ -100,7 +99,6 @@ Public Class frmBehavior
             .TableDescriptor.Columns("std_LastName").HeaderText = "นามสกุล"
             .TableDescriptor.Columns("std_Class").HeaderText = "ชั้น"
             .TableDescriptor.Columns("std_Room").HeaderText = "ห้อง"
-
             .TableDescriptor.Columns("BehaviorDetail").HeaderText = "รายละอียด"
             .TableDescriptor.Columns("Implementation").HeaderText = "การดำเนินการ"
             .TableDescriptor.Columns("Realization").HeaderText = "ผลการดำเนินการ"
@@ -109,8 +107,6 @@ Public Class frmBehavior
             .TableDescriptor.Columns("CreateAt").Appearance.AnyRecordFieldCell.Format = "dd/MM/yyyy"
             .TableDescriptor.Columns("CreateAt").Appearance.AnyRecordFieldCell.CellType = GridCellTypeName.TextBox
             .TableDescriptor.Columns("RecorderName").HeaderText = "ผู้บันทึก"
-
-
         End With
 
         '// GridVerticalAlignment.Middle
@@ -118,12 +114,11 @@ Public Class frmBehavior
             With Me.GGC
                 .TableDescriptor.Columns(i).Appearance.AnyRecordFieldCell.VerticalAlignment = GridVerticalAlignment.Middle
                 .TableDescriptor.Columns(i).AllowGroupByColumn = False
-                .TableDescriptor.Columns(i).Appearance.AnyRecordFieldCell.AutoSize = AutoSize
+                ' .TableDescriptor.Columns(i).Appearance.AnyRecordFieldCell.AutoSize = 10 'AutoSize
             End With
         Next
         '// Initialize normal GridGrouping
         With Me.GGC
-
             ' Allows GroupDropArea to be visible
             .ShowGroupDropArea = False  ' Disable
             '// Hidden Top Level of Grouping
@@ -140,6 +135,7 @@ Public Class frmBehavior
 
             '// Row Height
             .Table.DefaultRecordRowHeight = 25
+
             '// 
             .Table.DefaultCaptionRowHeight = 25
             .Table.DefaultColumnHeaderRowHeight = 30    '// Columns Header
@@ -160,7 +156,7 @@ Public Class frmBehavior
             .TableOptions.ShowRecordPreviewRow = False
             '//
             'Will enable the Group Header for the top most group.
-            .TopLevelGroupOptions.ShowGroupHeader = False ' True
+            .TopLevelGroupOptions.ShowGroupHeader = True ' True
             'Will enable the Group Footer for the group.
             .TopLevelGroupOptions.ShowGroupFooter = False 'True
             '//
@@ -173,6 +169,7 @@ Public Class frmBehavior
     Private Sub frmBehevior_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Conn = ConnectDataBase()
         RetrieveData()
+        Me.WindowState = FormWindowState.Maximized
     End Sub
 
     ' / --------------------------------------------------------------------------------
@@ -198,6 +195,34 @@ Public Class frmBehavior
             e.Handled = True
             '//
             Call RetrieveData(True)
+        End If
+    End Sub
+
+    ' / --------------------------------------------------------------------------------
+    '// Double click event for show detail of behavior in frmBehaviorDetail
+    Private Sub GGC_TableControlCellDoubleClick(sender As Object, e As GridTableControlCellClickEventArgs) Handles GGC.TableControlCellDoubleClick
+
+        '// Row of Column Header 
+        If e.Inner.RowIndex <= 1 Then Return
+        ' Notify the double click performed in a cell
+        Dim rec As Record = Me.GGC.Table.DisplayElements(e.TableControl.CurrentCell.RowIndex).ParentRecord
+        If (rec) IsNot Nothing Then
+            'MsgBox("Primary key = " & rec.GetValue("std_ID").ToString & " " & rec.GetValue("std_FirstName").ToString & " " & rec.GetValue("std_LastName").ToString)
+            Me.Enabled = False
+            frmBehaviorDetail.Show()
+            With frmBehaviorDetail
+                .txtStudentID.Text = rec.GetValue("std_ID").ToString
+                .txtStudentFirstName.Text = rec.GetValue("std_FirstName").ToString
+                .txtStudentLastName.Text = rec.GetValue("std_LastName").ToString
+                .txtClass.Text = rec.GetValue("std_Class").ToString
+                .txtRoom.Text = rec.GetValue("std_Room").ToString
+                .txtDetail.Text = rec.GetValue("BehaviorDetail").ToString
+                .txtImplementation.Text = rec.GetValue("Implementation").ToString
+                .txtRealization.Text = rec.GetValue("Realization").ToString
+                .txtRecorderName.Text = rec.GetValue("RecorderName").ToString
+                .DateTimePicker.BindableValue = rec.GetValue("CreateAt")
+                .cbType.SelectedIndex = rec.GetValue("BehaviorType") - 1
+            End With
         End If
     End Sub
 End Class

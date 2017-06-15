@@ -28,11 +28,13 @@ Partial Class frmLogin
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
         Me.lblCaptionPassword = New System.Windows.Forms.Label()
         Me.lblCaptionUserName = New System.Windows.Forms.Label()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.btnSignin = New Syncfusion.Windows.Forms.ButtonAdv()
         Me.btnCancle = New Syncfusion.Windows.Forms.ButtonAdv()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.TextBoxExt1 = New Syncfusion.Windows.Forms.Tools.TextBoxExt()
+        Me.txtUsername = New Syncfusion.Windows.Forms.Tools.TextBoxExt()
+        CType(Me.TextBoxExt1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtUsername, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblCaptionPassword
@@ -40,7 +42,7 @@ Partial Class frmLogin
         Me.lblCaptionPassword.AutoSize = True
         Me.lblCaptionPassword.Font = New System.Drawing.Font("Roboto Condensed", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCaptionPassword.ForeColor = System.Drawing.Color.DimGray
-        Me.lblCaptionPassword.Location = New System.Drawing.Point(7, 121)
+        Me.lblCaptionPassword.Location = New System.Drawing.Point(7, 118)
         Me.lblCaptionPassword.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCaptionPassword.Name = "lblCaptionPassword"
         Me.lblCaptionPassword.Size = New System.Drawing.Size(66, 28)
@@ -58,29 +60,6 @@ Partial Class frmLogin
         Me.lblCaptionUserName.Size = New System.Drawing.Size(83, 28)
         Me.lblCaptionUserName.TabIndex = 16
         Me.lblCaptionUserName.Text = "ชื่อผู้ใช้งาน"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.Font = New System.Drawing.Font("Roboto Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.ForeColor = System.Drawing.Color.DimGray
-        Me.txtPassword.Location = New System.Drawing.Point(12, 155)
-        Me.txtPassword.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
-        Me.txtPassword.Size = New System.Drawing.Size(314, 33)
-        Me.txtPassword.TabIndex = 15
-        Me.txtPassword.Text = "password"
-        '
-        'txtUsername
-        '
-        Me.txtUsername.Font = New System.Drawing.Font("Roboto Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsername.ForeColor = System.Drawing.Color.DimGray
-        Me.txtUsername.Location = New System.Drawing.Point(12, 69)
-        Me.txtUsername.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(314, 33)
-        Me.txtUsername.TabIndex = 14
-        Me.txtUsername.Text = "admin"
         '
         'btnSignin
         '
@@ -116,12 +95,48 @@ Partial Class frmLogin
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.Black
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
         Me.Panel2.Location = New System.Drawing.Point(-35, 226)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(500, 1)
         Me.Panel2.TabIndex = 20
+        '
+        'TextBoxExt1
+        '
+        Me.TextBoxExt1.BeforeTouchSize = New System.Drawing.Size(311, 30)
+        Me.TextBoxExt1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextBoxExt1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBoxExt1.Font = New System.Drawing.Font("Roboto Light", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxExt1.ForeColor = System.Drawing.Color.DimGray
+        Me.TextBoxExt1.Location = New System.Drawing.Point(14, 151)
+        Me.TextBoxExt1.Margin = New System.Windows.Forms.Padding(5)
+        Me.TextBoxExt1.Metrocolor = System.Drawing.Color.FromArgb(CType(CType(209, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(212, Byte), Integer))
+        Me.TextBoxExt1.Name = "TextBoxExt1"
+        Me.TextBoxExt1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
+        Me.TextBoxExt1.Size = New System.Drawing.Size(311, 30)
+        Me.TextBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.[Default]
+        Me.TextBoxExt1.TabIndex = 25
+        Me.TextBoxExt1.Text = "TextBoxExt1"
+        Me.TextBoxExt1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TextBoxExt1.WordWrap = False
+        '
+        'txtUsername
+        '
+        Me.txtUsername.BeforeTouchSize = New System.Drawing.Size(311, 30)
+        Me.txtUsername.BorderColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtUsername.Font = New System.Drawing.Font("Roboto Light", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsername.ForeColor = System.Drawing.Color.DimGray
+        Me.txtUsername.Location = New System.Drawing.Point(14, 68)
+        Me.txtUsername.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtUsername.Metrocolor = System.Drawing.Color.FromArgb(CType(CType(209, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(212, Byte), Integer))
+        Me.txtUsername.Name = "txtUsername"
+        Me.txtUsername.Size = New System.Drawing.Size(311, 30)
+        Me.txtUsername.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.[Default]
+        Me.txtUsername.TabIndex = 24
+        Me.txtUsername.Text = "txtUsername"
+        Me.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtUsername.WordWrap = False
         '
         'frmLogin
         '
@@ -140,13 +155,13 @@ Partial Class frmLogin
         CaptionImage1.Size = New System.Drawing.Size(48, 48)
         Me.CaptionImages.Add(CaptionImage1)
         Me.ClientSize = New System.Drawing.Size(339, 311)
+        Me.Controls.Add(Me.TextBoxExt1)
+        Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.btnCancle)
         Me.Controls.Add(Me.btnSignin)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.lblCaptionPassword)
         Me.Controls.Add(Me.lblCaptionUserName)
-        Me.Controls.Add(Me.txtPassword)
-        Me.Controls.Add(Me.txtUsername)
         Me.Font = New System.Drawing.Font("Roboto Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.IconTextRelation = System.Windows.Forms.LeftRightAlignment.Right
@@ -158,15 +173,17 @@ Partial Class frmLogin
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "เข้าสู่ระบบ"
+        CType(Me.TextBoxExt1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtUsername, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblCaptionPassword As Label
     Friend WithEvents lblCaptionUserName As Label
-    Friend WithEvents txtPassword As TextBox
-    Friend WithEvents txtUsername As TextBox
     Private WithEvents btnSignin As Syncfusion.Windows.Forms.ButtonAdv
     Private WithEvents btnCancle As Syncfusion.Windows.Forms.ButtonAdv
     Friend WithEvents Panel2 As Panel
+    Protected WithEvents txtUsername As Syncfusion.Windows.Forms.Tools.TextBoxExt
+    Protected WithEvents TextBoxExt1 As Syncfusion.Windows.Forms.Tools.TextBoxExt
 End Class

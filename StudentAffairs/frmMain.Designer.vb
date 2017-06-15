@@ -24,6 +24,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.RibbonControlAdv1 = New Syncfusion.Windows.Forms.Tools.RibbonControlAdv()
         Me.ToolStripTabItem1 = New Syncfusion.Windows.Forms.Tools.ToolStripTabItem()
@@ -52,6 +53,7 @@ Partial Class frmMain
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.stlMsg = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TabbedMDIManager = New Syncfusion.Windows.Forms.Tools.TabbedMDIManager(Me.components)
         CType(Me.RibbonControlAdv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RibbonControlAdv1.SuspendLayout()
         Me.ToolStripTabItem1.Panel.SuspendLayout()
@@ -403,6 +405,17 @@ Partial Class frmMain
         Me.stlMsg.Text = "Status"
         Me.stlMsg.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'TabbedMDIManager
+        '
+        Me.TabbedMDIManager.AttachedTo = Me
+        Me.TabbedMDIManager.CloseButtonBackColor = System.Drawing.Color.White
+        Me.TabbedMDIManager.CloseButtonToolTip = ""
+        Me.TabbedMDIManager.DropDownButtonToolTip = ""
+        Me.TabbedMDIManager.ImageSize = New System.Drawing.Size(16, 16)
+        Me.TabbedMDIManager.NeedUpdateHostedForm = False
+        Me.TabbedMDIManager.TabStyle = GetType(Syncfusion.Windows.Forms.Tools.TabRendererMetro)
+        Me.TabbedMDIManager.ThemesEnabled = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -410,6 +423,7 @@ Partial Class frmMain
         Me.ClientSize = New System.Drawing.Size(920, 640)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.RibbonControlAdv1)
+        Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MinimumSize = New System.Drawing.Size(920, 640)
@@ -465,4 +479,5 @@ Partial Class frmMain
     Friend WithEvents btnMUser As ToolStripButton
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripButton9 As ToolStripButton
+    Friend WithEvents TabbedMDIManager As TabbedMDIManager
 End Class
